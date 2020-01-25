@@ -14,7 +14,7 @@ const FormBlock = (props) => {
         event.preventDefault();
         props.onSubmitted(input);
         setInput({name: '', img: '', telephone: '', email: ''});
-        props.props.history.push('/');
+        props.address.history.push('/');
 
     };
     return (
@@ -24,8 +24,12 @@ const FormBlock = (props) => {
                        placeholder="phone"/>
             <Input required className="mb-3" type="url" name="img" value={input.img} onChange={inputChangeHandler} placeholder="image"/>
             <Input required type="email" name="email" value={input.email} onChange={inputChangeHandler} placeholder="email"/>
+            <img src={input.img}  width="150" height="auto" alt="" className="mt-3"/>
+          <br/>
+          <div>
             <Button type="submit" className="mr-5 mt-3" color="primary">Submit</Button>
-            <NavLink to="/">Go Back</NavLink>
+            <NavLink to="/" color="primary" >Go Back</NavLink>
+          </div>
         </Form>
     );
 };

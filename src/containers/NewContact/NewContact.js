@@ -7,7 +7,7 @@ const NewContact = (props) => {
 	return (
 		<div className="mt-3">
 			<div className="pb-3">Enter data: </div>
-			<FormBlock onSubmitted={props.addNewContact} props={props}/>
+			<FormBlock onSubmitted={props.addNewContact} address={props}/>
 		</div>
 	);
 };
