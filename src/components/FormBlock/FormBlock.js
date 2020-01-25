@@ -19,16 +19,16 @@ const FormBlock = (props) => {
     };
     return (
         <Form onSubmit={formSubmit} autoComplete="off">
-            <Input required className="mb-3" name="name" value={input.name} onChange={inputChangeHandler} placeholder="name" />
+            <Input required className="mb-3" name="name" value={input.name} onChange={inputChangeHandler} placeholder="Name" />
             <Input required className="mb-3" type="number" name="telephone" value={input.telephone} onChange={inputChangeHandler}
-                       placeholder="phone"/>
-            <Input required className="mb-3" type="url" name="img" value={input.img} onChange={inputChangeHandler} placeholder="image"/>
-            <Input required type="email" name="email" value={input.email} onChange={inputChangeHandler} placeholder="email"/>
-            <img src={input.img}  width="150" height="auto" alt="" className="mt-3"/>
+                       placeholder="Phone"/>
+            <Input required className="mb-3" type="url" name="img" value={input.img} onChange={inputChangeHandler} placeholder="Image"/>
+            <Input required type="email" name="email" value={input.email} onChange={inputChangeHandler} placeholder="E-mail"/>
+            <img src={input.img}  width="150" height="auto" alt="" className="mt-3 mb-3" style={{borderRadius: '50%'}}/>
           <br/>
-          <div>
-            <Button type="submit" className="mr-5 mt-3" color="primary">Submit</Button>
-            <NavLink to="/" color="primary" >Go Back</NavLink>
+          <div >
+            <Button  type="submit" className="mr-5 mt-0" color="primary">Submit</Button>
+            <NavLink to="/" style={{ backgroundColor: 'aquamarine', borderRadius: '5px', padding: '9px 10px 11px'}}>Go Back</NavLink>
           </div>
         </Form>
     );
