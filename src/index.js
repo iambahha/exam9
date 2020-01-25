@@ -1,19 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore, applyMiddleware, combineReducers} from "redux";
+import {createStore, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
 import thunk from "redux-thunk";
 import {composeWithDevTools} from "redux-devtools-extension";
 import App from './App';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
+import reducer from './store/reducers/contactsReducer'
 
-const rootReducer = combineReducers({
-	d: dishesReducer,
-	o: ordersReducer,
-});
 
-const store = createStore(rootReducer,
+
+const store = createStore(reducer,
 	composeWithDevTools(applyMiddleware(thunk))
 );
 
