@@ -1,13 +1,19 @@
-import React, {Component} from 'react';
+import React from 'react';
+import FormBlock from "../../components/FormBlock/FormBlock";
+import {addNewContact} from "../../store/actions/contactsActions";
+import {connect} from "react-redux";
 
-class NewContact extends Component {
-	render() {
-		return (
-			<div>
-				
-			</div>
-		);
-	}
-}
+const NewContact = (props) => {
+	return (
+		<div className="mt-3">
+			<div className="pb-3">Enter data: </div>
+			<FormBlock onSubmitted={props.addNewContact} props={props}/>
+		</div>
+	);
+};
 
-export default NewContact;
+const mapDispatchToProps = (dispatch) => ({
+	addNewContact : (contact) => dispatch(addNewContact(contact)),
+});
+
+export default connect(null, mapDispatchToProps)(NewContact);

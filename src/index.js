@@ -5,9 +5,11 @@ import {Provider} from "react-redux";
 import thunk from "redux-thunk";
 import {composeWithDevTools} from "redux-devtools-extension";
 import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import reducer from './store/reducers/contactsReducer'
+import reducer from './store/reducers/contactReducer'
 
 
 

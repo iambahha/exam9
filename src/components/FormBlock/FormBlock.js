@@ -1,40 +1,32 @@
 import React, {useEffect, useState} from 'react';
-import TextField from "@material-ui/core/TextField";
-import {makeStyles} from '@material-ui/core/styles';
-import Button from "@material-ui/core/Button";
-
-const useStyles = makeStyles(theme => ({
-    paper: {
-        width: 400,
-        display: 'flex',
-        flexDirection: 'column',
-        backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(2, 4, 3),
-    },
-}));
+import {Button, Form, Input} from "reactstrap";
+import {NavLink} from "react-router-dom";
 
 const FormBlock = (props) => {
-    const classes = useStyles();
-    const [input, setInput] = useState({title: '', img: '', price: ''});
-    const inputChangeHandler = event => setInput({...input, [event.target.name]: event.target.value});
+  const [input, setInput] = useState({name: '', img: '', telephone: '', email: ''});
+  const inputChangeHandler = event => setInput({...input, [event.target.name]: event.target.value});
     useEffect(() => {
-        if (props.dishes){
-            setInput(props.dishes);
+        if (props.contacts){
+            setInput(props.contacts);
         }
-    },[props.dishes]);
+    },[props.contacts]);
     const formSubmit = event => {
         event.preventDefault();
         props.onSubmitted(input);
-        setInput({title: '', img: '', price: ''});
+        setInput({name: '', img: '', telephone: '', email: ''});
+        props.props.history.push('/');
+
     };
     return (
-        <form onSubmit={formSubmit} className={classes.paper} noValidate autoComplete="off">
-            <TextField required name="title" value={input.title} onChange={inputChangeHandler} label="Title"/>
-            <TextField required type="number" name="price" value={input.price} onChange={inputChangeHandler}
-                       label="Price"/>
-            <TextField required type="url" name="img" value={input.img} onChange={inputChangeHandler} label="image"/>
-            <Button type="submit" color="primary">Submit</Button>
-        </form>
+        <Form onSubmit={formSubmit} autoComplete="off">
+            <Input required className="mb-3" name="name" value={input.name} onChange={inputChangeHandler} placeholder="name" />
+            <Input required className="mb-3" type="number" name="telephone" value={input.telephone} onChange={inputChangeHandler}
+                       placeholder="phone"/>
+            <Input required className="mb-3" type="url" name="img" value={input.img} onChange={inputChangeHandler} placeholder="image"/>
+            <Input required type="email" name="email" value={input.email} onChange={inputChangeHandler} placeholder="email"/>
+            <Button type="submit" className="mr-5 mt-3" color="primary">Submit</Button>
+            <NavLink to="/">Go Back</NavLink>
+        </Form>
     );
 };
 

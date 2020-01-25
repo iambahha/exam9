@@ -33,11 +33,11 @@ export const removeContact = (id) => {
 	}
 };
 
-export const editContact = (dish) => {
+export const editContact = (contact) => {
 	return async dispatch => {
 		try {
 			dispatch(requestContactsStart());
-			await axiosContacts.put('/contacts/' + dish.id + '.json',dish);
+			await axiosContacts.put('/contacts/' + contact.id + '.json',contact);
 			dispatch(getAllContacts());
 		} catch (e) {
 			dispatch(requestContactsError(e));
